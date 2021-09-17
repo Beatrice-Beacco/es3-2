@@ -88,7 +88,9 @@ app.post('/api/persons', (request, response) => {
     })
 
     //Saves the entry i mongodb and sends it as response
-    entry.save().then(savedEntry => response.json(savedEntry))
+    entry.save()
+    .then(savedEntry => response.json(savedEntry))
+        .catch(err => response.status(500).send(err))
 })
 
 //Checks fon the name propriety using Mongoose find method
